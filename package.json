@@ -47,6 +47,7 @@
         "@types/node": "^18.16.1",
         "@types/sprintf-js": "^1.1.2",
         "@types/webpack": "^5.28.1",
+        "azad": "file:",
         "datatables": "^1.10.18",
         "extpay": "^3.0.7",
         "jquery": "^3.6.4",

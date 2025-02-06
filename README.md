@@ -41,7 +41,7 @@ Check out [commercial_features.md](doc/commercial_features.md) for more detail. 
 * Thank you! First, for the great and useful tool you've created; second, for paying all that effort forward to something as meaningful and important as Princess Alice. You are a good man.
 * Great extension. Saves a ton of time vs doing this manually. Amazon really is shafting their users here. One plus would to report the entire address or scape the postal code...
 
-# Help!
+# Help!--
 
 ## Common problems, with some fixes
 

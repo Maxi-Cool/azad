@@ -21,7 +21,7 @@
 
 .azad_progress_bar {
     background-color: LightBlue;
-    block: inline;
+    display: inline;
 }
 
 .azad_progress_worm {
@@ -66,4 +66,13 @@
 
 .azad_hidden {
     display: none;
+}
+.azad_control_page{
+    width: 512px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index:2;
+    
 }

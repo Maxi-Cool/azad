@@ -70,6 +70,9 @@ function pagesShowOnly(button_ids: string[]): void {
   button_ids.forEach( id => $('#' + id).removeClass('hidden') );
 }
 
+
+
+
 let background_port: chrome.runtime.Port|null = null;
 function connectToBackground() {
   console.log('connectToBackground');
@@ -289,5 +292,33 @@ function init() {
   registerActionButtons();
   registerPageButtons();
 }
+
+var a = document.getElementById("Home_Page_Button");
+var b = document.getElementById("Payments_Page_Button");
+var c = document.getElementById("Returns_Page_Button");
+var d = document.getElementById("Donate_Page_Button");
+
+var w = document.getElementById("HomePage");
+var x =document.getElementById("PurchasesPage");
+var y =document.getElementById("ReturnsPage");
+var z = document.getElementById("DonatePage");
+var M = document.getElementById("azad_page_actions");
+var MRect = M.getBoundingClientRect().left;
+function HomePage() {
+ let wRect = w.getBoundingClientRect().left - MRect;
+ 
+
+}
+function PurchasesPage() {
+
+}
+function ReturnsPage() {
+
+}
+function DonatePage() {
+
+}
+
+
 
 $(document).ready( () => init() );

@@ -68,11 +68,47 @@
     display: none;
 }
 .azad_control_page{
-    width: 512px;
+    width: 1024px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     z-index:2;
     
+}
+#HomePage {
+    position: relative;
+    left: 4px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+#PurchasesPage {
+    position: relative;
+    right: -520px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+
+}
+
+#ReturnsPage {
+    position: relative;
+    right: -1044px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+}
+
+
+#DonatePage {
+    position: relative;
+    right: -1568px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
 }

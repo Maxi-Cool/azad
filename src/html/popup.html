@@ -31,114 +31,116 @@
 
 
     <div id="azad_page_default" class="azad_control_page">
-      <div id="HomePage">
-        <div id="azad_year_missing_message"></div>
-        <div id="azad_year_list"></div>
-        <div class="azad_separator"></div>
-        <div id="azad_info">
-          <table>
+      <div id="pgMover">  
+        <div id="HomePage">
+          <div id="azad_year_missing_message"></div>
+          <div id="azad_year_list"></div>
+          <div class="azad_separator"></div>
+          <div id="azad_info">
+            <table>
+              <tr>
+                <td>
+                  <div id="azad_state">idle</div>
+                </td>
+                <td>
+                  <div id="azad_statistics"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="azad_separator"></div>
+          <div id="azad_help">
+            <a href="https://github.com/philipmulcahy/azad/blob/master/README.md"
+              target="_blank" class="azad_help" id="azad_help">
+                Click HERE if you get incorrect results
+            </a>
+          </div>
+          <div class="azad_separator"></div>
+          <table id="azad_table_type_setting">
+            <tr>
+              <td colspan="3">
+                What do you want to see?
+              </td>
+            </tr>
+            <tr>
+              <td>Orders</td>
+              <td>Items</td>
+              <td>Shipments</td>
+              <td>Transactions</td>
+            </tr>
             <tr>
               <td>
-                <div id="azad_state">idle</div>
+                <input type="radio" class="azad_table_type"
+                      id="azad_show_orders" name="table_type"/>
               </td>
               <td>
-                <div id="azad_statistics"></div>
+                <input type="radio" class="azad_table_type"
+                      id="azad_show_items" name="table_type"/>
+              </td>
+              <td class="azad_disabled">
+                <input type="radio" class="azad_table_type azad_disabled"
+                      id="azad_show_shipments" name="table_type"/>
+              </td>
+              <td class="azad_disabled">
+                <input type="radio" class="azad_table_type azad_disabled"
+                      id="azad_show_transactions" name="table_type"
+                      title="Amazon does not seem to keep much transaction history: don't expect it to go back as far as your order history does." />
               </td>
             </tr>
           </table>
-        </div>
-        <div class="azad_separator"></div>
-        <div id="azad_help">
-          <a href="https://github.com/philipmulcahy/azad/blob/master/README.md"
-            target="_blank" class="azad_help" id="azad_help">
-              Click HERE if you get incorrect results
-          </a>
-        </div>
-        <div class="azad_separator"></div>
-        <table id="azad_table_type_setting">
-          <tr>
-            <td colspan="3">
-              What do you want to see?
-            </td>
-          </tr>
-          <tr>
-            <td>Orders</td>
-            <td>Items</td>
-            <td>Shipments</td>
-            <td>Transactions</td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" class="azad_table_type"
-                    id="azad_show_orders" name="table_type"/>
-            </td>
-            <td>
-              <input type="radio" class="azad_table_type"
-                    id="azad_show_items" name="table_type"/>
-            </td>
-            <td class="azad_disabled">
-              <input type="radio" class="azad_table_type azad_disabled"
-                    id="azad_show_shipments" name="table_type"/>
-            </td>
-            <td class="azad_disabled">
-              <input type="radio" class="azad_table_type azad_disabled"
-                    id="azad_show_transactions" name="table_type"
-                    title="Amazon does not seem to keep much transaction history: don't expect it to go back as far as your order history does." />
-            </td>
-          </tr>
-        </table>
-        <table id="azad_settings">
-          <tr>
-            <td>
-            <input type="checkbox" id="show_totals_in_csv">
-            <label for="show_totals_in_csv">Show totals in csv downloads</label>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox"
-                    id="show_invoice_links"
-                    title="This feature can be quite unreliable because Amazon puts the links in inconsistent places in their order pages, and quite often even if they're present, they are broken."/>
-              <label for="show_invoice_links">Show invoice links</label>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox"
-                    id="show_category_in_items_view"
-                    title="selecting this will slow scraping down"/>
-              <label for="show_category_in_items_view">
-                Show category in item table
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td class="azad_disabled">
-              <input type="checkbox"
-                    id="show_shipment_info"
-                    title="While this feature is behind the paywall you should reload your amazon pages after you log into the extensionpay dialog: if the text for this checkbox is still faded then it is not settable.">
-              <label for="show_shipment_info">Show shipment/tracking columns</label>
-            </td>
-          </tr>
-        </table>
-        <div class="azad_separator"></div>
-        <div>
-          <table width="100%">
+          <table id="azad_settings">
             <tr>
               <td>
-                <input type="button"
-                      class="azad_always_button"
-                      id="azad_switch_extensionpay"
-                      value="preview/premium features"
-                      title="explore paid preview/premium features"/>
+              <input type="checkbox" id="show_totals_in_csv">
+              <label for="show_totals_in_csv">Show totals in csv downloads</label>
               </td>
+            </tr>
             <tr>
+              <td>
+                <input type="checkbox"
+                      id="show_invoice_links"
+                      title="This feature can be quite unreliable because Amazon puts the links in inconsistent places in their order pages, and quite often even if they're present, they are broken."/>
+                <label for="show_invoice_links">Show invoice links</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox"
+                      id="show_category_in_items_view"
+                      title="selecting this will slow scraping down"/>
+                <label for="show_category_in_items_view">
+                  Show category in item table
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="azad_disabled">
+                <input type="checkbox"
+                      id="show_shipment_info"
+                      title="While this feature is behind the paywall you should reload your amazon pages after you log into the extensionpay dialog: if the text for this checkbox is still faded then it is not settable.">
+                <label for="show_shipment_info">Show shipment/tracking columns</label>
+              </td>
+            </tr>
           </table>
+          <div class="azad_separator"></div>
+          <div>
+            <table width="100%">
+              <tr>
+                <td>
+                  <input type="button"
+                        class="azad_always_button"
+                        id="azad_switch_extensionpay"
+                        value="preview/premium features"
+                        title="explore paid preview/premium features"/>
+                </td>
+              <tr>
+            </table>
+          </div>
         </div>
-      </div>
-      <div id="PurchasesPage"></div>
-      <div id="ReturnsPage"></div>
-      <div id="DonatePage"></div>
+        <div id="PurchasesPage"></div>
+        <div id="ReturnsPage"></div>
+        <div id="DonatePage"></div>
+      </div>  
     </div>
 
 

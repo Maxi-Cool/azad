@@ -302,11 +302,14 @@ var w = document.getElementById("HomePage");
 var x =document.getElementById("PurchasesPage");
 var y =document.getElementById("ReturnsPage");
 var z = document.getElementById("DonatePage");
+
 var M = document.getElementById("azad_page_actions");
 var MRect = M.getBoundingClientRect().left;
 function HomePage() {
  let wRect = w.getBoundingClientRect().left - MRect;
- 
+ if (!(wRect>0 && wRect<500)){
+
+ }
 
 }
 function PurchasesPage() {
@@ -319,6 +322,13 @@ function DonatePage() {
 
 }
 
+function moveLPx(num) {
+ var page = document.getElementById("pgMover")
+ page.style.left = "num"
+}
 
+function moveRPx(num) {
+
+}
 
 $(document).ready( () => init() );

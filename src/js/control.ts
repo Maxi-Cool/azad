@@ -302,33 +302,88 @@ var w = document.getElementById("HomePage");
 var x =document.getElementById("PurchasesPage");
 var y =document.getElementById("ReturnsPage");
 var z = document.getElementById("DonatePage");
+var box = document.getElementById("pgMover")
+
+
 
 var M = document.getElementById("azad_page_actions");
 var MRect = M.getBoundingClientRect().left;
 function HomePage() {
- let wRect = w.getBoundingClientRect().left - MRect;
- if (!(wRect>0 && wRect<500)){
+  var boxRect = box.getBoundingClientRect().left;
+  var MoveAlign = boxRect-MRect;
+ if (MoveAlign < 0) {
+  if(MoveAlign=-505){
+   moveRPx(505);
+  }
+  else if(MoveAlign=-1010){
+    moveRPx(1010);
+  }
+  else if(MoveAlign=-1515){
+    moveRPx(1515);
+  }
 
  }
 
-}
+ }
 function PurchasesPage() {
+  var boxRect = box.getBoundingClientRect().left;
+  var MoveAlign = boxRect-MRect;
+  if (MoveAlign <-505) {
+   if(MoveAlign=-1010){
+    moveRPx(505);
+   }
+   else if(MoveAlign=-1515){
+     moveRPx(1010);
+   }
 
+ 
+  }
+  else{
+    moveLPx(505);
+  }
 }
 function ReturnsPage() {
+  var boxRect = box.getBoundingClientRect().left;
+  var MoveAlign = boxRect-MRect;
+  if (MoveAlign < -1010) {
+   if(MoveAlign =-1515){
+    moveRPx(505);
+   }
 
+ 
+  }
+  else{
+    if(MoveAlign=-505){
+      moveLPx(505);
+    } 
+    if(MoveAlign=0){
+      moveLPx(1010);
+    }
+  }
 }
 function DonatePage() {
-
+  var boxRect = box.getBoundingClientRect().left;
+  var MoveAlign = boxRect-MRect;
+  if (MoveAlign > -1515) {
+   if(MoveAlign =0){
+    moveLPx(1515);
+   }
+   else if(MoveAlign=-505){
+     moveLPx(1010);
+   }
+   else if(MoveAlign>=-1010){
+     moveLPx(505);
+   }
+ 
+  }
 }
 
-function moveLPx(num) {
- var page = document.getElementById("pgMover")
- page.style.left = "num"
+function moveLPx(num: number) {
+ box.style.left = num +"px";
 }
 
-function moveRPx(num) {
-
-}
+function moveRPx(num: number) {
+  box.style.right = num +"px";
+ }
 
 $(document).ready( () => init() );

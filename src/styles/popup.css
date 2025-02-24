@@ -1,7 +1,11 @@
 html {
   font-family: arial,sans-serif;
 }
+html, body {
+  width: 1000px;  /* set desired width */
+  height: 1000px; /* set desired height */
 
+}
 input.azad_action {
   color: white;
   background-color: royalblue;

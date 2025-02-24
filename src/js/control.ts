@@ -305,85 +305,125 @@ var z = document.getElementById("DonatePage");
 var box = document.getElementById("pgMover")
 
 
-
-var M = document.getElementById("azad_page_actions");
+document.addEventListener("DOMContentLoaded", () => {
+var M = document.getElementById("azad_page_default") as HTMLElement | null;
+if(M)
+{
 var MRect = M.getBoundingClientRect().left;
-function HomePage() {
-  var boxRect = box.getBoundingClientRect().left;
-  var MoveAlign = boxRect-MRect;
- if (MoveAlign < 0) {
-  if(MoveAlign=-505){
-   moveRPx(505);
-  }
-  else if(MoveAlign=-1010){
-    moveRPx(1010);
-  }
-  else if(MoveAlign=-1515){
-    moveRPx(1515);
-  }
+}
+else{
+  console.log("ji!");
+}
 
- }
+let currentIndex = 0;
+const pageWidth = 505; 
 
- }
-function PurchasesPage() {
-  var boxRect = box.getBoundingClientRect().left;
-  var MoveAlign = boxRect-MRect;
-  if (MoveAlign <-505) {
-   if(MoveAlign=-1010){
-    moveRPx(505);
-   }
-   else if(MoveAlign=-1515){
-     moveRPx(1010);
-   }
+function goToPage(index: number) {
+  currentIndex = index;
+  // If each page is 505px wide:
+  box.style.transform = `translateX(-${currentIndex * pageWidth}px)`;
+}
+
+// Then in your button clicks:
+a.addEventListener("click", () => goToPage(0));
+b.addEventListener("click", () => goToPage(1));
+c.addEventListener("click", () => goToPage(2));
+d.addEventListener("click", () => goToPage(3));
+
+// function HomePage() {
+//   var boxRect = box.getBoundingClientRect().left;
+//   var MoveAlign = boxRect-MRect;
+//  if (MoveAlign < 0) {
+//   if(MoveAlign==-505){
+//    moveRPx(505);
+//   }
+//   else if(MoveAlign==-1010){
+//     moveRPx(1010);
+//   }
+//   else if(MoveAlign==-1515){
+//     moveRPx(1515);
+//   }
+
+//  }
+
+//  }
+// function PurchasesPage() {
+//   var boxRect = box.getBoundingClientRect().left;
+//   var MoveAlign = boxRect-MRect;
+//   if (MoveAlign <-505) {
+//    if(MoveAlign==-1010){
+//     moveRPx(505);
+//    }
+//    else if(MoveAlign==-1515){
+//      moveRPx(1010);
+//    }
 
  
-  }
-  else{
-    moveLPx(505);
-  }
-}
-function ReturnsPage() {
-  var boxRect = box.getBoundingClientRect().left;
-  var MoveAlign = boxRect-MRect;
-  if (MoveAlign < -1010) {
-   if(MoveAlign =-1515){
-    moveRPx(505);
-   }
+//   }
+//   else{
+//     moveLPx(505);
+//   }
+// }
+// function ReturnsPage() {
+//   var boxRect = box.getBoundingClientRect().left;
+//   var MoveAlign = boxRect-MRect;
+//   if (MoveAlign < -1010) {
+//    if(MoveAlign ==-1515){
+//     moveRPx(505);
+//    }
 
  
-  }
-  else{
-    if(MoveAlign=-505){
-      moveLPx(505);
-    } 
-    if(MoveAlign=0){
-      moveLPx(1010);
-    }
-  }
-}
-function DonatePage() {
-  var boxRect = box.getBoundingClientRect().left;
-  var MoveAlign = boxRect-MRect;
-  if (MoveAlign > -1515) {
-   if(MoveAlign =0){
-    moveLPx(1515);
-   }
-   else if(MoveAlign=-505){
-     moveLPx(1010);
-   }
-   else if(MoveAlign>=-1010){
-     moveLPx(505);
-   }
+//   }
+//   else{
+//     if(MoveAlign==-505){
+//       moveLPx(505);
+//     } 
+//     if(MoveAlign==0){
+//       moveLPx(1010);
+//     }
+//   }
+// }
+// function DonatePage() {
+//   var boxRect = box.getBoundingClientRect().left;
+//   var MoveAlign = boxRect-MRect;
+//   if (MoveAlign > -1515) {
+//    if(MoveAlign ==0){
+//     moveLPx(1515);
+//    }
+//    else if(MoveAlign==-505){
+//      moveLPx(1010);
+//    }
+//    else if(MoveAlign>=-1010){
+//      moveLPx(505);
+//    }
  
-  }
-}
+//   }
+// }
 
-function moveLPx(num: number) {
- box.style.left = num +"px";
-}
+// function moveLPx(num: number) {
+//  box.style.left = num +"px";
+// }
 
-function moveRPx(num: number) {
-  box.style.right = num +"px";
- }
+// function moveRPx(num: number) {
+//   box.style.right = num +"px";
+//  }
+//  a?.addEventListener("click", function () {
+//   HomePage();
+// });
+
+// b?.addEventListener("click", function () {
+//   PurchasesPage();
+// });
+
+// c?.addEventListener("click", function () {
+//   ReturnsPage();
+// });
+
+// d?.addEventListener("click", function () {
+//   DonatePage();
+// });
+
+});
+
 
 $(document).ready( () => init() );

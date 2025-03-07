@@ -2,8 +2,8 @@ html {
   font-family: arial,sans-serif;
 }
 html, body {
-  width: 1000px;  /* set desired width */
-  height: 1000px; /* set desired height */
+  width: 510px;  /* set desired width */
+  height: 500px; /* set desired height */
 
 }
 input.azad_action {
@@ -155,4 +155,79 @@ a:active {
 
 #azad_table_type_setting {
   border: 1px solid orange;
+}
+
+.azad_control_page{
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+ overflow: hidden;
+  z-index:2;
+  
+}
+
+#pgMover {
+
+   /* Adds space inside the element, to the right */
+  padding-right:5px; /* Adds space inside the element, to the left */
+  padding-top: 10px;   /* Adds space inside the element, above */
+  padding-bottom: 10px;
+  width: 2020px;
+  display: flex;
+  flex-direction: row;
+  transition: .5s ease-in-out;
+  
+  
+}
+#HomePage {
+  position: relative;
+  /*left: 4px;*/
+  margin-left: 5px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  
+}
+#PurchasesPage {
+  position: relative;
+  /*right: -500px;*/
+  margin-left: 5px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  
+
+}
+
+#ReturnsPage {
+  position: relative;
+  /*right: -1000px;*/
+  margin-left: 5px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+#DonatePage {
+  position: relative;
+  /*right: -1500px;*/
+  margin-left: 5px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#footer {
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  text-align: center;
 }

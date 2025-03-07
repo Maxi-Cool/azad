@@ -7,6 +7,7 @@
     border-style: Solid;
     border-color: Orange;
     border-width: 2px;
+    /* width: 100%; */
 }
 
 .azad_default_button {
@@ -66,64 +67,4 @@
 
 .azad_hidden {
     display: none;
-}
-.azad_control_page{
-    width: 510px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* overflow: hidden; */
-    z-index:2;
-    
-}
-
-#pgMover {
-     /* Adds space inside the element, to the right */
-    padding-right:5px; /* Adds space inside the element, to the left */
-    padding-top: 10px;   /* Adds space inside the element, above */
-    padding-bottom: 10px;
-    width: 2020px;
-    display: flex;
-    flex-direction: row;
-    transition: .5s ease-in-out;
-}
-#HomePage {
-    position: relative;
-    /*left: 4px;*/
-    margin-left: 5px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    
-}
-#PurchasesPage {
-    position: relative;
-    /*right: -500px;*/
-    margin-left: 5px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    
-
-}
-
-#ReturnsPage {
-    position: relative;
-    /*right: -1000px;*/
-    margin-left: 5px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    
-}
-
-
-#DonatePage {
-    position: relative;
-    /*right: -1500px;*/
-    margin-left: 5px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    
 }

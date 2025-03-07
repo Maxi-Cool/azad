@@ -8,9 +8,7 @@ import * as settings from './settings';
 import * as util from './util';
 
 $(document).ready(function() {
-  $('body').on(
-    'click',
-    'a',
+  $('body').on('click','a',
     function(event: Event) {
       const a: HTMLAnchorElement = event.currentTarget as HTMLAnchorElement;
       const href: string|null = a.getAttribute('href');
@@ -306,14 +304,14 @@ var box = document.getElementById("pgMover")
 
 
 document.addEventListener("DOMContentLoaded", () => {
-var M = document.getElementById("azad_page_default") as HTMLElement | null;
-if(M)
-{
-var MRect = M.getBoundingClientRect().left;
-}
-else{
-  console.log("ji!");
-}
+// var M = document.getElementById("azad_page_default") as HTMLElement | null;
+// if(M)
+// {
+// var MRect = M.getBoundingClientRect().left;
+// }
+// else{
+//   console.log("ji!");
+// }
 
 let currentIndex = 0;
 const pageWidth = 505; 
@@ -329,6 +327,9 @@ a.addEventListener("click", () => goToPage(0));
 b.addEventListener("click", () => goToPage(1));
 c.addEventListener("click", () => goToPage(2));
 d.addEventListener("click", () => goToPage(3));
+
+
+
 
 // function HomePage() {
 //   var boxRect = box.getBoundingClientRect().left;

@@ -8,6 +8,17 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const imageFileExtensions = ["jpg", "jpeg", "png", "gif", "svg"];
 
 const chrome_extension_options = {
+    optimization: {
+        usedExports: true,  // Remove unused exports
+        minimize: false,     // Minify output
+    },
+    devtool: "cheap-source-map",
+    watchOptions: {
+        ignored: /node_modules/,
+        aggregateTimeout: 300, // Delay rebuild after first change (ms)
+        poll: 1000, // Check for changes every 1000ms (1 sec)
+      },
+    stats: "verbose",
     target: 'web',
     mode: process.env.NODE_ENV || "development",
     entry: {
@@ -18,7 +29,8 @@ const chrome_extension_options = {
     },
     output: {
         path: path.join(__dirname, "build"),
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        charset: true
     },
     module: {
         rules: [
@@ -38,41 +50,58 @@ const chrome_extension_options = {
             },
             {
                 test: new RegExp('\\.(' + imageFileExtensions.join('|') + ')$'),
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]'
-                        }
-                    }
-                ],
+                type: 'asset/resource',
                 exclude: /node_modules/,
             },
             {
                 test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader'
-                    }
-                ],
+                use: ['html-loader'],
                 exclude: /node_modules/,
             }
         ]
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        fallback: {
+            "http": require.resolve("stream-http"),
+            "https": require.resolve("https-browserify"),
+            "url": require.resolve("url/"),
+            "assert": require.resolve("assert/"),
+            "crypto": require.resolve("crypto-browserify"),
+            "stream": require.resolve("stream-browserify"),
+            "zlib": require.resolve("browserify-zlib"),
+            "os": require.resolve("os-browserify/browser"),
+            "path": require.resolve("path-browserify"),
+            "buffer": require.resolve("buffer/"),
+            "util": require.resolve("util/"),
+            "fs": false,
+            "tls": false,
+            "net": false,
+            "child_process": false,
+            "perf_hooks": false, // Prevents Webpack from bundling perf_hooks
+            "canvas": false,  // Prevents Webpack from trying to bundle `canvas`
+
+            "vm": require.resolve("vm-browserify"),   // Fixes 'vm' error
+            "bufferutil": false,                      // Prevents WebSocket optional dependency error
+            "utf-8-validate": false 
+        }
     },
     plugins: [
-        // clean the build folder
         new CleanWebpackPlugin(),
-        // expose and write the allowed env vars on the compiled bundle
-        new webpack.EnvironmentPlugin(["NODE_ENV"]),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^canvas$/
+        }),
+        new webpack.EnvironmentPlugin({ NODE_ENV: process.env.NODE_ENV || "development" }),
+        new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
+        new webpack.ProvidePlugin({
+            process: "process/browser",
+            Buffer: ["buffer", "Buffer"],
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {
                     from: "src/manifest.json",
                     transform: function (content, _path) {
-                        // generates the manifest file using the package.json informations
                         return Buffer.from(
                             JSON.stringify({
                                 description: process.env.npm_package_description,
@@ -93,6 +122,12 @@ const chrome_extension_options = {
                 { from: "src/styles/inject.css" },
                 { from: "src/styles/popup.css" }
             ]
+        }),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^canvas$/,
+        }),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^perf_hooks$/,
         })
     ]
 };
@@ -105,53 +140,48 @@ const node_options = {
     },
     output: {
         path: path.join(__dirname, "build-node"),
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        charset: true
+
     },
     module: {
         rules: [
-            // TODO upgrade to https://webpack.js.org/guides/asset-modules/
-            {
-                test: new RegExp('\\.(' + imageFileExtensions.join('|') + ')$'),
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]'
-                        }
-                    }
-                ],
-                exclude: /node_modules/,
-            },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: [
                     {
                         loader: 'ts-loader',
-                        options: {compilerOptions: {outDir: "./build-node"}}
+                        options: { transpileOnly: true }  // Speeds up build
                     }
                 ],
             },
             {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(jpg|jpeg|png|gif|svg)$/,
+                type: 'asset/resource',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                    }
-                ],
-                exclude: /node_modules/
+                use: ['html-loader'],
+                exclude: /node_modules/,
             }
         ]
     },
     resolve: {
-        alias: {},
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        // clean the build folder
         new CleanWebpackPlugin(),
-        // expose and write the allowed env vars on the compiled bundle
-        new webpack.EnvironmentPlugin(["NODE_ENV"]),
+        new webpack.EnvironmentPlugin({ NODE_ENV: process.env.NODE_ENV || "development" }),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^canvas$/
+        }),
     ]
 };
 

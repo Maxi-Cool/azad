@@ -1,9 +1,27 @@
 const webpack = require("webpack");
-const config = require("../webpack.config");
+const config = require("../webpack.config.js");
 
-delete config.chromeExtensionBoilerplate;
+const args = process.argv.slice(2);
+const isWatchMode = args.includes("--watch");
 
-webpack(
-    config,
-    function (err) { if (err) throw err; }
-);
+const compiler = webpack(config);
+
+if (isWatchMode) {
+    compiler.watch({
+        ignored: /node_modules/,
+        aggregateTimeout: 300,
+        poll: 1000,
+    }, (err, stats) => {
+        if (err || stats.hasErrors()) {
+            console.error(err || stats.toJson().errors);
+        }
+        console.log(stats.toString());
+    });
+} else {
+    compiler.run((err, stats) => {
+        if (err || stats.hasErrors()) {
+            console.error(err || stats.toJson().errors);
+        }
+        console.log(stats.toString());
+    });
+}

@@ -22,7 +22,7 @@ export function clearCache() {
 }
 
 const CACHE_KEY = 'ALL_TRANSACTIONS';
-
+//THIS IS THE BIG HEFFER!!!!
 export async function reallyScrapeAndPublish(
   getPort: () => Promise<chrome.runtime.Port | null>,
   startDate: Date,
@@ -197,7 +197,7 @@ function mergeTransactions(
 
   return ts;
 }
-
+//Important
 async function extractAllTransactions() {
   let allKnownTransactions = await getTransactionsFromCache();
 

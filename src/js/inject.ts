@@ -339,6 +339,10 @@ function handleMessageFromBackgroundToRootContentPage(msg: any): void {
           'Cache cleared',
         document
       );
+      notice.showNotificationBar(
+        'Hello from Max',
+        document
+      );
       break;
     case 'force_logout':
       signin.forceLogOut('https://' + SITE);

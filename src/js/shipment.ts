@@ -216,7 +216,7 @@ function get_refund(shipment_elem: HTMLElement): string {
   );
   return refund == null ? '' : refund;
 }
-
+//maxz
 function is_delivered(shipment_elem: HTMLElement): Delivered {
   const attr = shipment_elem.getAttribute('class');
 	if ((attr as string).includes('shipment-is-delivered')) {

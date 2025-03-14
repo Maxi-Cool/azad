@@ -49,11 +49,11 @@ function appendCell(
         return x;
       }
     } else if (x == '') {
-      return '';
+      return '';  
     } else {
       return 0;
     }
-  };
+  };    
 
   const value_written_promise = col_spec.render_func ?
     (col_spec?.render_func(entity, td) ?? Promise.resolve()) as Promise<void> :
@@ -152,7 +152,7 @@ function addTransactionTable(
 ): Promise<HTMLTableElement> {
   return addTable(doc, transactions, cols);
 }
-
+//MAJIC HAPPENNING!
 async function addTable(
     doc: HTMLDocument,
     entities: azad_entity.IEntity[],

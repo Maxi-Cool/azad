@@ -211,7 +211,7 @@ function maybeShowMissingYearsMessage(got_some_years: boolean) {
   $('#azad_year_missing_message *').remove();
   if (!got_some_years) {
     $('#azad_year_missing_message').append(
-      '<span>No kkkkkkkkkkkkkk scrapeable years found. ' +
+      '<span>No yyyyyyyyyyyyyy scrapeable years found. ' +
       'It is likely you don\'t have a tab open that ' +
       'can see your amazon orders. It needs to be open on your chosen ' +
       'amazon country site, <band</b> logged in to your account.</span>' +

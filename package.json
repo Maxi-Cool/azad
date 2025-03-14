@@ -27,6 +27,7 @@
         "@typescript-eslint/parser": "^6.5.0",
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^11.0.0",
+        "crypto-browserify": "^3.12.1",
         "css-loader": "^6.7.3",
         "eslint": "^8.48.0",
         "file-loader": "^6.2.0",
